@@ -28,8 +28,8 @@ mongoose
 //Routes
 app.patch("/api/saveUserWorkout", async (req, res) => {
     const token = req.headers["x-access-token"];
-    const { date, weightFields } = req.body;
-    const savedWorkout = { date: date, workouts: weightFields };
+    const { date, type, weightFields } = req.body;
+    const savedWorkout = { date: date, type: type, workouts: weightFields };
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);

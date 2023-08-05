@@ -6,7 +6,7 @@ const User = new mongoose.Schema(
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         workoutOn: { type: Number },
-        savedWorkouts: [{ date: { type: String }, workouts: { type: Array } }],
+        savedWorkouts: [{ date: { type: String }, type: {type: String}, workouts: { type: Array } }],
     },
     { collection: "user-data" }
 );
