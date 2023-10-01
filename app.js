@@ -240,9 +240,10 @@ app.patch("/api/updateUserDay", async (req, res) => {
 app.post("/api/addSplitTemplate", async (req, res) => {
     const {workouts, isPublic} = req.body;
     console.log(workouts);
+    console.log(JSON.parse(workouts));
 
     try {
-        await Split.create({workouts: workouts, isPublic: isPublic});
+        await Split.create({workouts: JSON.parse(workouts), isPublic: isPublic});
         res.json({ status: "ok" });
     } catch (error) {
         res.json({ status: "error", error: "Couldn't Add Workout Split" });
