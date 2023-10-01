@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/user.model");
 const Workout = require("./models/workout.model");
+const Split = require("./models/split.model")
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -233,6 +234,17 @@ app.patch("/api/updateUserDay", async (req, res) => {
     } catch (error) {
         console.log(error);
         res.json({ status: "error", error: "Invalid Token" });
+    }
+});
+
+app.post("/api/addSplitTemplate", async (req, res) => {
+    const {workouts, isPublic} = req.body;
+
+    try {
+        await Split.create({workouts: workouts, isPublic: isPublic});
+        res.json({ status: "ok" });
+    } catch (error) {
+        res.json({ status: "error", error: "Couldn't Add Workout Split" });
     }
 });
 
