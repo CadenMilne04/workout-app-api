@@ -239,6 +239,7 @@ app.patch("/api/updateUserDay", async (req, res) => {
 
 app.post("/api/addSplitTemplate", async (req, res) => {
     const {workouts, isPublic} = req.body;
+    console.log(workouts);
 
     try {
         await Split.create({workouts: workouts, isPublic: isPublic});
